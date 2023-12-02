@@ -1,0 +1,16 @@
+targets:
+  $default:
+    builders:
+      json_serializable:
+        generate_for:
+          - "**/services/**_model.dart"
+          - "**/model/**_model.dart"
+          - "**/database/**_model.dart"
+        options:
+          explicit_to_json: true
+          include_if_null: false
+      injectable_generator:injectable_builder:
+        generate_for:
+          - "**/services/**_repository.dart"
+          - "**/services/**_client.dart"
+          - "**/module/**.dart"

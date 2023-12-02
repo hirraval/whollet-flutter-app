@@ -1,0 +1,37 @@
+name: data
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: '>=3.1.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  whollet_environment:
+    path: ../whollet_environment
+  whollet_extensions:
+    path: ../whollet_extensions
+  network:
+    git:
+      url: git@gitlab.com:ajay.p/elaunch-flutter-plugins.git
+      path: packages/network
+  json_annotation: ^4.8.1
+  shared_preferences: ^2.2.1
+  injectable: ^2.3.0
+  get_it: ^7.6.4
+  dio: ^5.3.2
+  equatable: ^2.0.5
+  retry: ^3.1.2
+  http_parser: ^4.0.2
+  path_provider: ^2.1.1
+  path: ^1.8.3
+  cross_file: ^0.3.3+5
+  hive: ^2.2.3
+  socket_io_client: ^2.0.3+1
+
+dev_dependencies:
+  flutter_lints: ^2.0.3
+  build_runner: ^2.4.6
+  json_serializable: ^6.7.1
+  injectable_generator: ^2.4.0

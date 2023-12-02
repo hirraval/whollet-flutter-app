@@ -1,0 +1,44 @@
+name: core
+description: A new Flutter project.
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: '>=3.1.2 <4.0.0'
+
+dependencies:
+
+  network:
+    git:
+      url: git@gitlab.com:ajay.p/elaunch-flutter-plugins.git
+      path: packages/network
+
+  whollet_loading_indicator:
+    path: ../whollet_loading_indicator
+
+  equatable: ^2.0.5
+  bloc: ^8.1.1
+  rxdart: ^0.27.7
+  url_launcher: ^6.1.10
+  connectivity_plus: ^3.0.3
+  intl: ^0.17.0
+  uni_links: ^0.5.1
+  dio: ^5.0.2
+  permission_handler: ^10.4.3
+
+
+#  Social Login Utils
+  firebase_auth: ^4.10.0
+  google_sign_in: ^6.1.5
+  sign_in_with_apple:
+  flutter_facebook_auth: ^6.0.2
+
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
