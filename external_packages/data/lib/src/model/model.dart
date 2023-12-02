@@ -6,6 +6,7 @@ export 'maintenance_request_model.dart';
 export 'model_helpers.dart';
 export 'nest_service_credentials_model.dart';
 export 'selector.dart';
+export 'shared/shared.dart';
 export 'technical_guides_model.dart';
 export 'token_response_model.dart';
 export 'upload_video_image_model.dart';
