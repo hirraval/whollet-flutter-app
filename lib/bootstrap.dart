@@ -62,7 +62,7 @@ Future<void> bootstrap(
     );
 
     final preference = dependencyHelper<AppPreference>();
-    final userState = UserState(user: preference.user, isLogin: preference.isLogin);
+    final userState = UserState(user: preference.user, isLogin: false);
 
     return runApp(MultiBlocProvider(
       providers: [

@@ -3,53 +3,6 @@ import 'package:whollet_extensions/whollet_extensions.dart';
 import 'package:whollet_flutter_app/resources/resources.dart';
 import 'package:whollet_flutter_app/src/l10n/l10n.dart';
 
-import 'app_image.dart';
-
-class BottomPersistenceButton extends StatelessWidget {
-  final VoidCallback? onPressed;
-  final String label;
-  final Color? backgroundColor;
-  final Color? foregroundColor;
-  final bool transparent;
-
-  const BottomPersistenceButton({
-    super.key,
-    required this.onPressed,
-    required this.label,
-    this.transparent = true,
-    this.backgroundColor,
-    this.foregroundColor,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    Widget child = SafeArea(
-      top: false,
-      minimum: const EdgeInsets.fromLTRB(16, 8, 16, 16),
-      child: IntrinsicHeight(
-        child: _ElevatedButton(
-          backgroundColor: backgroundColor,
-          foregroundColor: foregroundColor,
-          onPressed: onPressed,
-          label: label,
-        ),
-      ),
-    );
-
-    if (!transparent) {
-      final theme = Theme.of(context);
-      final bottomAppBarTheme = theme.bottomAppBarTheme;
-      child = Material(
-        color: bottomAppBarTheme.color,
-        shadowColor: theme.colorScheme.shadow,
-        elevation: bottomAppBarTheme.elevation ?? 0,
-        child: child,
-      );
-    }
-    return child;
-  }
-}
-
 abstract class _Button extends StatelessWidget {
   final VoidCallback? onPressed;
   final String label;
@@ -100,6 +53,7 @@ class SecondaryButton extends _Button {
       onPressed: onPressed,
       dense: dense,
       backgroundColor: colorScheme.onSecondary,
+      foregroundColor: colorScheme.primary,
     );
   }
 }
@@ -282,36 +236,12 @@ class LeadingBackButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      style: TextButton.styleFrom(foregroundColor: color ?? context.colorScheme.onSurfaceVariant),
-      onPressed: onPressed ??
-              () {
-            bool canPop = context.navigator.canPop();
-            if (canPop) {
-              context.navigator.maybePop();
-            } else {
-              Navigator.of(context, rootNavigator: true).maybePop();
-            }
-          },
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            String.fromCharCode(Icons.arrow_back_ios_new_rounded.codePoint),
-            style: TextStyle(
-              fontFamily: Icons.arrow_back_ios_new_rounded.fontFamily,
-              package: Icons.arrow_back_ios_new_rounded.fontPackage,
-            ),
-          ),
-          Flexible(
-            child: Text(label ?? context.l10n.backButtonLabel),
-          ),
-        ],
-      ),
+    return IconButton(
+      onPressed: onPressed ?? context.navigator.canPop,
+      icon: const Icon(Icons.arrow_back_ios,size: 22),
     );
   }
 }
-
 
 class DeleteIconButton extends StatelessWidget {
   final VoidCallback onPressed;

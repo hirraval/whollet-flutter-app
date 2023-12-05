@@ -31,11 +31,14 @@ interface class AppTheme {
       onBackground: Color(0xFF000000),
       surface: Color(0xFFFFFFFF),
       onSurface: Color(0xFF27272B),
-      surfaceVariant: Color(0xFFEDEDED),
-      onSurfaceVariant: Color(0xFF686768),
+      surfaceVariant: Color(0xFFB5BBC9),
+      onSurfaceVariant: Color(0xFFCFD2D8),
       surfaceTint: Color(0xFFFFFFFF),
       outline: Color(0xFFD8D8D8),
       shadow: Color(0x336A6A6A),
+      primaryContainer: Color(0xFF3D4C63),
+      onSecondaryContainer: Color(0xFF9EA5B1),
+      onPrimaryContainer: Color(0xFF003282),
     );
 
     return generateThemeData(colorScheme);
@@ -147,7 +150,6 @@ interface class AppTheme {
           strokeColor: colorScheme.primary,
         ),
       ),
-
     );
   }
 
@@ -218,21 +220,19 @@ interface class AppTheme {
 
   static InputDecorationTheme inputDecorationTheme(ColorScheme colorScheme) {
     return InputDecorationTheme(
-      labelStyle: const TextStyle(fontWeight: FontWeight.w500),
-      floatingLabelStyle: TextStyle(fontWeight: FontWeight.w500, color: colorScheme.secondary),
-      hintStyle: const TextStyle(fontWeight: FontWeight.w500),
+      labelStyle: TextStyle(fontWeight: FontWeight.w400,color: colorScheme.surfaceVariant),
+      floatingLabelStyle: TextStyle(fontWeight: FontWeight.w400, color: colorScheme.surfaceVariant),
+      hintStyle: TextStyle(fontWeight: FontWeight.w400,color: colorScheme.primaryContainer,fontSize: 19),
       errorStyle: const TextStyle(fontWeight: FontWeight.w500),
       errorMaxLines: 3,
       constraints: LayoutConstraints.textField,
-      fillColor: colorScheme.surface,
-      filled: true,
-      border: _InputBorder(borderSide: BorderSide(color: colorScheme.surfaceVariant)),
-      disabledBorder: _InputBorder(borderSide: BorderSide(color: colorScheme.surfaceVariant)),
-      enabledBorder: _InputBorder(borderSide: BorderSide(color: colorScheme.surfaceVariant)),
-      focusedBorder: _InputBorder(borderSide: BorderSide(color: colorScheme.secondary)),
-      focusedErrorBorder: _InputBorder(borderSide: BorderSide(color: colorScheme.error)),
-      errorBorder: _InputBorder(borderSide: BorderSide(color: colorScheme.error)),
-      contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      border: UnderlineInputBorder(borderSide: BorderSide(color: colorScheme.onSurfaceVariant)),
+      disabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: colorScheme.onSurfaceVariant)),
+      enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: colorScheme.onSurfaceVariant)),
+      focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: colorScheme.primary,width: 2)),
+      focusedErrorBorder: UnderlineInputBorder(borderSide: BorderSide(color: colorScheme.onSurfaceVariant)),
+      errorBorder: UnderlineInputBorder(borderSide: BorderSide(color: colorScheme.onSurfaceVariant)),
+      contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
     );
   }
 

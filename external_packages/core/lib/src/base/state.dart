@@ -1,7 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 
-abstract class EmptyState extends Equatable {}
+class EmptyState extends Equatable {
+  @override
+  List<Object> get props => [];
+}
 
 abstract class BaseLoadingState {
   final bool isLoading;
@@ -127,7 +130,8 @@ class PaginatedListState<T> extends ListState<T> {
     required List<T> list,
   }) {
     return PaginatedListState(
-      list: List.from(this.list)..addAll(list),
+      list: List.from(this.list)
+        ..addAll(list),
       isLoading: isLoading ?? this.isLoading,
       reachAtEnd: reachAtEnd ?? this.reachAtEnd,
     );

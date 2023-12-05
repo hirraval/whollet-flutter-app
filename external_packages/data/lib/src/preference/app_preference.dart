@@ -23,15 +23,9 @@ class AppPreference {
   set accessToken(TokenData? value) =>
       _setData("access_token", value?.toJson());
 
-  String? get userId => _preference.getString("user_id");
+  bool get hasSeenIntro => _preference.getBool("has_seen_intro") ?? false;
 
-  set userId(String? value) {
-    if (value == null) {
-      _preference.remove("user_id");
-      return;
-    }
-    _preference.setString("user_id", value);
-  }
+  set hasSeenIntro(bool value) => _preference.setBool("has_seen_intro", value);
 
   User? get user => _getData<User>("user", User.fromJson);
 

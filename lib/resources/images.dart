@@ -11,3 +11,11 @@ base class IntroImages {
 
   static String get fourthIntro => "${_basePath}fourth_intro.svg";
 }
+
+base class AuthImages {
+  static String get _basePath => "assets/images/auth/";
+
+  AuthImages();
+
+  static String get loginVector => "${_basePath}login_vector.svg";
+}

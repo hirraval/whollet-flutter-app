@@ -1,6 +1,8 @@
+import 'package:data/data.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:whollet_extensions/whollet_extensions.dart';
+import 'package:whollet_flutter_app/app/dependency.dart';
 import 'package:whollet_flutter_app/components/components.dart';
 import 'package:whollet_flutter_app/resources/resources.dart';
 import 'package:whollet_flutter_app/src/l10n/generated/l10n.dart';
@@ -20,6 +22,8 @@ class OnBoardingView extends StatefulWidget {
 class _OnBoardingViewState extends State<OnBoardingView> {
   final _imageController = PageController();
   final _controller = PageController();
+  late final _dependencyHelper = DependencyHelper.getInstance();
+  late final _preference = _dependencyHelper<AppPreference>();
 
   @override
   void initState() {
@@ -110,7 +114,10 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                           builder: (context) {
                             if (_controller.pageIndex == 3) {
                               return PrimaryButton(
-                                onPressed: () => context.navigator.pushReplacementNamed(WelcomeView.routeName),
+                                onPressed: () {
+                                  _preference.hasSeenIntro = true;
+                                  context.navigator.pushReplacementNamed(WelcomeView.routeName);
+                                },
                                 label: WholletLocalization.of(context).letsGetStartedButtonLabel,
                                 dense: true,
                               );
@@ -144,7 +151,10 @@ class _OnBoardingViewState extends State<OnBoardingView> {
                 right: 0,
                 top: 20,
                 child: TextButton(
-                    onPressed: () => context.navigator.pushReplacementNamed(WelcomeView.routeName),
+                    onPressed: () {
+                      _preference.hasSeenIntro = true;
+                      context.navigator.pushReplacementNamed(WelcomeView.routeName);
+                    },
                     child: Text(
                       l10n.skipButtonLabel,
                       style: textTheme.titleLarge?.copyWith(color: colorScheme.primary, fontSize: 19),

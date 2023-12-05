@@ -62,6 +62,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/images/intro/
+    - assets/images/auth/
 
   fonts:
     - family: Titillium
